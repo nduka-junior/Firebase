@@ -26,9 +26,9 @@ function Page() {
   if (user)
     return (
       <>
+      
+          <AddData />
         
-            <AddData />
-       
       </>
     );
 }

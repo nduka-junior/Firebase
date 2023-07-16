@@ -7,8 +7,8 @@ function Feed({ feed }) {
   return (
     feed && (
       <>
-        <div className="mt-4 p-3">
-          <div className="flex justify-start items-start ">
+        <div className="mt-4 p-3 w-[100%] justify-center   ">
+          <div className="flex  w-[100%] items-start  ">
             <Image
               src={feed.photoURL}
               width={30}
@@ -26,7 +26,7 @@ function Feed({ feed }) {
                 </h1>
               </div>
               <p className="text-[13px]">{feed.text} </p>
-              <div className="grid  grid-cols-2 custom_main gap-2 mt-3">
+              <div className="grid  grid-cols-2 custom_main gap-2 mt-3 ">
                 {feed.image &&
                   feed.image.map((url, i) => {
                     return (
@@ -40,7 +40,7 @@ function Feed({ feed }) {
                           height={100}
                           alt={feed.name}
                           style={{
-                            objectFit: "cover",
+                            objectFit: " cover",
                             height: "100%",
                           }}
                         />

@@ -13,7 +13,7 @@ function AddData() {
   const [disabled, setDisabled] = useState(false);
   const [files, setFiles] = useState("");
   const [percent, setPercent] = useState(null);
-const router = useRouter()
+  const router = useRouter();
   const addData = async (url) => {
     if (!text) {
       toast.error("Please enter name");
@@ -37,7 +37,7 @@ const router = useRouter()
       toast.success("Data added successfully");
       setText("");
       setDisabled(false);
-      router.push('/feeds')
+      router.push("/feeds");
     } catch (e) {
       setDisabled(true);
       console.error("Error adding document: ", e);
@@ -83,10 +83,18 @@ const router = useRouter()
   function handleChange(event) {
     setFiles(event.target.files);
   }
+  useEffect(() => {
+    if (files.length > 4) {
+      toast.error("Please upload max 4 images");
+      setFiles("");
+      setText("")
+    }
+  }, [files]);
   const handleUpload = async () => {
+  
     // const url = await handleImageUpload(files);
     let url = [];
-  
+
     for (const file of files) {
       const durl = await handleImageUpload(file);
       url.push(durl);
@@ -108,41 +116,43 @@ const router = useRouter()
         />
       )}
 
-      <div className=" mt-3  flex  justify-start flex-col">
-        <div className="flex items-center">
-          <h1 className="text-lg mr-3">Enter name:</h1>
-          <input
-            type="text"
-            className="outline-none p-2 bg-[#5b5b5b82]"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </div>
-        <div className="flex items-center  mt-4">
-          <h1  className="text-lg mr-3">
-            Upload Image
-          </h1>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleChange}
-    
-          />
-        </div>
+      <div className=" flex flex-col h-[60vh] w-[100vw] items-center justify-center ">
+        <div className=" justify-center items-center  flex  flex-col w-[100vw]">
+          <div>
+            <div className="flex items-center">
+              <h1 className="text-lg mr-3">Enter Text:</h1>
+              <input
+                type="text"
+                className="outline-none p-2 bg-[#5b5b5b82] w-[70%] rounded"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="write something..."
+              />
+            </div>
+            <div className="flex items-center  mt-[30px]">
+              <h1 className="text-lg mr-3">Upload Image:</h1>
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleChange}
+            
+              />
+            </div>
 
-        <button
-          className="rounded border-solid  border-2 border-[#cececec8] px-3 py-2 ml-4 hover:text-[#acacac] hover:border-[white] text-[13px] mt-4 w-[50%]"
-          onClick={() => {
-            // addData();
-            handleUpload();
-          }}
-          disabled={disabled}
-        >
-          Submit
-        </button>
+            <button
+              className="rounded border-solid  border-2 border-[#cececec8] px-3 py-2  hover:text-[#acacac] hover:border-[white] text-[13px] mt-[30px] w-[100%]"
+              onClick={() => {
+                // addData();
+                handleUpload();
+              }}
+              disabled={disabled}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
-
       <ToastContainer
         position="bottom-left"
         autoClose={4000}
