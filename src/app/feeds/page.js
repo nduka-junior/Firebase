@@ -6,6 +6,7 @@ import Feed from "@/component/Feed";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase/firebase";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
 function Page() {
     const [feeds, setFeeds] = useState(null);
     const [user, loading, error] = useAuthState(auth);
@@ -52,9 +53,21 @@ if(loading) return <h1 className="w-[100vw] h-[100vh] flex justify-center items-
     if (user)
   return (
     <>
-      {feeds?.map((feed,id) => {
-          return <Feed feed={feed} key={id} />;
+      {feeds?.map((feed, id) => {
+        return <Feed feed={feed} key={id} />;
       })}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 

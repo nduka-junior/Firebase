@@ -3,12 +3,16 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase/firebase";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 function Nav() {
   const [user, loading, error] = useAuthState(auth);
+const router = useRouter()
   const signOut = () => {
     auth.signOut().then((res) => {
       console.log(res);
       localStorage.setItem("logout", "true");
+      router.push('/')
+
     });
   };
   return (
