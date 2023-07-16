@@ -40,7 +40,10 @@ function Page() {
     };
     useEffect(() => {
         // if (!user) router.push("/");
-        if (error) toast.error(error.message);
+        if (error) {
+            toast.error(error.message);
+            router.push("/");
+        }
     }, [user]);
     useEffect(() => {
         getdata();
