@@ -16,7 +16,7 @@ export default function Home() {
   const [user, loading, error] = useAuthState(auth);
   const googleProvider = new GoogleAuthProvider();
  
-  if (user) router.back();
+  if (user) router.push("/dashboard");
   const signInWithGooogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {

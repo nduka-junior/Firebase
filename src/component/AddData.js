@@ -31,7 +31,7 @@ const router = useRouter()
         date: new Date().getTime(),
         id: docRef.id,
         photoURL: user.photoURL,
-        image: url,
+        image: url || [],
       });
       console.log("Document written with ID: ", docRef.id);
       toast.success("Data added successfully");
@@ -86,7 +86,7 @@ const router = useRouter()
   const handleUpload = async () => {
     // const url = await handleImageUpload(files);
     let url = [];
-    if (files.length <= 0) return toast.error("Please select image");
+  
     for (const file of files) {
       const durl = await handleImageUpload(file);
       url.push(durl);

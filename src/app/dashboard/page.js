@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase/firebase";
 import { useRouter } from "next/navigation";
 import AddData from "@/component/AddData";
-function page() {
+function Page() {
   //   const [user, loading, error] = middleware();
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
@@ -33,4 +33,4 @@ function page() {
     );
 }
 
-export default page;
+export default Page;
