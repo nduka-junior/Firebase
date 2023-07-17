@@ -58,8 +58,8 @@ function Page() {
   if (user)
       return (
         <>
-              <div className="w-[100vw] flex flex-col items-center
-          justify-start ">
+              <div className=" flex flex-col items-center
+          justify-start mx-[10vw] max-sm:mx-[4vw] ">
             {feeds?.map((feed, id) => {
               return <Feed feed={feed} key={id} />;
             })}

@@ -112,14 +112,24 @@ a {
 
 .custom_grid3:first-child {
   grid-area: span 2;
+  max-height: 100% !important;
 }
-.custom_grid3 > img{
+.custom_grid3 > img {
   width: 100%;
 }
 .custom_grid4 {
-  
-
 }
-.custom_main {
-  height: 100%;
+
+.grid_1 {
+  grid-template-columns: minmax(0, 1fr);
+  border: none;
+}
+.grid_2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid_3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid_4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
